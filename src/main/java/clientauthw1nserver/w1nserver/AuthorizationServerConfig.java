@@ -28,7 +28,7 @@ import javax.sql.DataSource;
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private static final String CLIEN_ID = "admin";
-    private static final String CLIENT_SECRET = "$2a$04$j2bbE4GTU8MDxosV81Ip1.kTnFEIzil4s2LXMwjzxEsE/tyLUJDYC";
+    private static final String CLIENT_SECRET = "$2a$04$j2bbE4GTU8MDxosV81Ip1.kTnFEIzil4s2LXMwjzxEsE/tyLUJDYC";  // ciao
     private static final String GRANT_TYPE_PASSWORD = "password";
     private static final String AUTHORIZATION_CODE = "authorization_code";
     private static final String REFRESH_TOKEN = "refresh_token";

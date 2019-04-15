@@ -2,7 +2,6 @@ package clientauthw1nserver.w1nserver.controller;
 
 import clientauthw1nserver.w1nserver.dto.ApiResponse;
 import clientauthw1nserver.w1nserver.dto.UserDto;
-import clientauthw1nserver.w1nserver.model.User;
 import clientauthw1nserver.w1nserver.service.AuthenticationFacadeServiceImpl;
 import clientauthw1nserver.w1nserver.service.UserService;
 import org.slf4j.Logger;
@@ -10,11 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+
 
 @RestController
 @RequestMapping("/users")
@@ -25,6 +23,7 @@ public class UserController {
     public static final String SUCCESS = "success";
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_USER = "ROLE_USER";
+    public static final String ROLE_DATORE = "ROLE_DATORE";
 
     @Autowired
     private UserService userService;
@@ -66,7 +65,7 @@ public class UserController {
         userService.delete(id);
     }
 
-    @Secured({ROLE_ADMIN, ROLE_USER})
+    @Secured({ROLE_ADMIN, ROLE_USER, ROLE_DATORE})
     @RequestMapping(value = "/user/chisono" , method = RequestMethod.GET)
     public ApiResponse chisono(){
         try {
@@ -77,6 +76,7 @@ public class UserController {
 
         return new ApiResponse(HttpStatus.OK, SUCCESS, authenticationFacadeService.getAuthentication().getPrincipal());
     }
+
 
 
 

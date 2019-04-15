@@ -47,6 +47,10 @@ public class UserService implements UserDetailsService {
 
 
 
+    public long prendiIdByUsername(String username){
+        return userDao.findByUsername(username).getId();
+    }
+
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         User user = userDao.findByUsername(userId);
         System.out.println("CERCATO");
